@@ -39,11 +39,13 @@
 <!--    This will give the nice user experience of easily searching multiple times in a row. -->
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+<div>
+    <h3 th:text="${'Results: ' + jobSize}"></h3>
 
-    <div class="job-listing">
-        <table th:each="job : ${jobs}">
-            <tbody th:each="mapEntry : ${job}">
-                <tr>
+    <div>
+        <table class="job-listing">
+            <tbody th:each="job : ${jobs}">
+                <tr th:each="mapEntry,idx : ${job}">
                     <td th:text="${mapEntry.key}">Key</td>
                     <td th:text="${mapEntry.value}">Value</td>
                 </tr>
@@ -53,7 +55,7 @@
 
 
     </div>
-
+</div>
 </div>
 
 </body>

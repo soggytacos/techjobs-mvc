@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -32,11 +33,14 @@ public class SearchController {
             ArrayList<HashMap<String, String>> jobs = JobData.findByValue(searchTerm);
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);
+            int jobSize = jobs.size();
+            model.addAttribute("jobSize", jobSize);
         } else {
             ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("title", "All " + ListController.columnChoices.get(searchType) + " Values");
-            //model.addAttribute("column", column);
             model.addAttribute("jobs", jobs);
+            int jobSize = jobs.size();
+            model.addAttribute("jobSize", jobSize);
         }
 
         return "search";
