@@ -35,8 +35,24 @@
     </form>
 
     <hr />
+<!--    This template will be used to display search results, in addition to displaying the form. -->
+<!--    This will give the nice user experience of easily searching multiple times in a row. -->
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+
+    <div class="job-listing">
+        <table th:each="job : ${jobs}">
+            <tbody th:each="mapEntry : ${job}">
+                <tr>
+                    <td th:text="${mapEntry.key}">Key</td>
+                    <td th:text="${mapEntry.value}">Value</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
 
 </div>
 

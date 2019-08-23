@@ -12,10 +12,13 @@ import java.util.HashMap;
 /**
  * Created by LaunchCode
  */
+
+// Procides functionality for users to see lists of all values of a given data column.
 @Controller
 @RequestMapping(value = "list")
 public class ListController {
 
+    //provides a centralized collection of the different list and search options presented throughout the user interface.
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
@@ -35,6 +38,8 @@ public class ListController {
     }
 
     @RequestMapping(value = "values")
+    // Uses the query parameter passed in as column to determine which values to fetch from JobData. "All" will render in list-jobs.html,
+    // and a single column will render in list-column.html.
     public String listColumnValues(Model model, @RequestParam String column) {
 
         if (column.equals("all")) {
@@ -53,6 +58,8 @@ public class ListController {
     }
 
     @RequestMapping(value = "jobs")
+    // Takes in two query parameters column and value. User will arrive at this handler method as a result of clicking on a link within
+    // one of the views instead of via submitting a form. Does not deal with the "All" scenario.
     public String listJobsByColumnAndValue(Model model,
             @RequestParam String column, @RequestParam String value) {
 

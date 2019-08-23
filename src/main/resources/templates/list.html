@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head">
 </head>
 <body>
-
+<!--    Displays the list options using data from the 'columnChoices' HashMap passed in via the model as 'columns'. -->
     <div th:replace="fragments :: page-header"></div>
 
     <div class="container body-content">
@@ -11,6 +11,12 @@
         <h2>View All</h2>
         <ul>
             <li th:each="column : ${columns}">
+<!--                Generates links within a Thymleaf template to generate query parameters for our URL based on the key/value pairs specified. -->
+<!--                specify a query parameter named column by using 'column='. the value of which is determined dynamically based on the value of ${column.key}.-->
+<!--                These values come from 'columnChoices' in the controller, so they will be employer, location, etc.-->
+<!--                When the user clicks on these links, they will be routed to the listColumnValues handler in ListController which looks for this parameter. -->
+<!--                -->
+<!--                YOUR JOB: Clicking on these links (with 2 values) will display a list of jobs in the given location via the listJobsByColumnAndValue.-->
                 <a th:href="@{/list/values(column=${column.key})}" th:text="${column.value}"></a>
             </li>
         </ul>
